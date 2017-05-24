@@ -41,6 +41,7 @@ GEM
     arel (7.1.4)
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bower-rails (0.11.0)
     builder (3.2.3)
     byebug (9.0.6)
     coffee-rails (4.2.1)
@@ -59,6 +60,8 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.7.3)
+      i18n (~> 0.5)
     ffi (1.9.18)
     foreman (0.84.0)
       thor (~> 0.19.1)
@@ -162,9 +165,11 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bower-rails
   byebug
   coffee-rails (~> 4.2)
   devise
+  faker
   foreman
   jbuilder (~> 2.5)
   jquery-rails
