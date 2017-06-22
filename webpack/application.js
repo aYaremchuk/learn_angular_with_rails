@@ -17,6 +17,24 @@ var ng = {
     http: require("@angular/http")
 };
 
+var CustomerAppComponent = require("./CustomerAppComponent");
+var CustomerSearchComponent = require("./CustomerSearchComponent");
+var CustomerDetailsComponent = require("./CustomerDetailsComponent");
+
+
+var routing = ng.router.RouterModule.forRoot(
+    [
+        {
+            path: "",
+            component: CustomerSearchComponent
+        },
+        {
+            path: ":id",
+            component: CustomerDetailsComponent
+        }
+    ]
+);
+
 // Angular test
 
 var AngularTestComponent = ng.core.Component({
@@ -46,18 +64,19 @@ var AngularTestAppModule = ng.core.NgModule({
 });
 
 // Customer Search
-
-var CustomerSearchComponent = require("./CustomerSearchComponent");
-
 var CustomerSearchAppModule = ng.core.NgModule({
     imports: [
         ng.platformBrowser.BrowserModule,
         ng.forms.FormsModule,
-        ng.http.HttpModule
-
+        ng.http.HttpModule,
+        routing
     ],
-    declarations: [ CustomerSearchComponent ],
-    bootstrap: [ CustomerSearchComponent ]
+    declarations: [
+        CustomerSearchComponent,
+        CustomerDetailsComponent,
+        CustomerAppComponent
+    ],
+    bootstrap: [ CustomerAppComponent ]
 })
     .Class({
         constructor: function() {}
