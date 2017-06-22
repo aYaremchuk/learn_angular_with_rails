@@ -9,6 +9,20 @@ var CustomerSearchComponent = proxyquire(
     }
 );
 
+var createMockHttp = function(customer) {
+    var response = td.object(["json"]);
+    td.when(response.json()).thenReturn({ customer: customer });
+    var observable = td.object(["subscribe"]);
+    td.when(observable.subscribe(
+        td.callback(response),
+        td.matchers.isA(Function))).thenReturn();
+    var mockHttp = td.object(["get"]);
+    td.when(
+        mockHttp.get("/customers/" + customer.id + ".json")
+    ).thenReturn(observable);
+    return mockHttp;
+};
+
 var td = require("testdouble");
 
 var component = null;
