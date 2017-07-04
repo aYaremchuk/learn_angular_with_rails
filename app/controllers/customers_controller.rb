@@ -30,10 +30,22 @@ class CustomersController < ApplicationController
     end
   end
 
+  # def show
+  #   customer = Customer.find(params[:id])
+  #   respond_to do |format|
+  #     format.json { render json: { customer: customer } }
+  #   end
+  # end
+
   def show
     customer = Customer.find(params[:id])
     respond_to do |format|
-      format.json { render json: { customer: customer } }
+      format.json do
+        render json: {
+            customer: customer,
+            shipping_address: customer.shipping_address,
+            billing_address: customer.billing_address,
+        }
+      end
     end
-  end
 end
